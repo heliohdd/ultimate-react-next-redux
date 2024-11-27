@@ -150,3 +150,10 @@ book;
 const { title, author, pages, publicationDate, genres, hasMovieAdaptation } =
   book;
 console.log(author, title, genres);
+
+const [primaryGenre, secondaryGenre, ...others] = genres;
+
+console.log(primaryGenre, secondaryGenre, ...others);
+const newGenres = ["epic fantasy", ...genres];
+
+console.log(newGenres);

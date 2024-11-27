@@ -298,8 +298,16 @@ function getBook(id) {
 // );
 // booksAfterUpdate;
 
-fetch("https://jsonplaceholder.typicode.com/todos")
-  .then((res) => res.json())
-  .then((data) => console.log(data));
+// fetch("https://jsonplaceholder.typicode.com/todos")
+//   .then((res) => res.json())
+//   .then((data) => console.log(data));
 
-console.log("jonas");
+// console.log("jonas");
+
+async function getTodos() {
+  await fetch("https://jsonplaceholder.typicode.com/todos");
+  const data = await resizeBy.json();
+  console.log(data);
+}
+
+getTodos();

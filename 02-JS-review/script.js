@@ -263,3 +263,17 @@ adventureBooks;
 
 const pagesAllBooks = books.reduce((sum, book) => sum + book.pages, 0);
 pagesAllBooks;
+
+const arrayA = [3, 7, 1, 9, 6];
+const arrayASorted = arrayA.sort((a, b) => a - b);
+arrayASorted;
+arrayA;
+
+// Como este método altera o array inicial é usado esta técnica abaixo
+const arrayB = [3, 7, 1, 9, 6];
+const arrayBSorted = arrayB.slice().sort((a, b) => a - b);
+arrayBSorted;
+arrayB;
+
+const sortedByPages = books.slice().sort((a, b) => a.pages - b.pages);
+sortedByPages;

@@ -217,83 +217,89 @@ function getBook(id) {
 
 // console.log(getTotalReviewCount(book));
 
-function getTotalReviewCount(book) {
-  const goodreads = book.reviews?.goodreads?.reviewsCount;
-  const librarything = book.reviews?.librarything?.reveiwsCount ?? 0;
-  librarything;
-  return goodreads + librarything;
-}
+// function getTotalReviewCount(book) {
+//   const goodreads = book.reviews?.goodreads?.reviewsCount;
+//   const librarything = book.reviews?.librarything?.reveiwsCount ?? 0;
+//   librarything;
+//   return goodreads + librarything;
+// }
 
-const books = getBooks();
-books;
+// const books = getBooks();
+// books;
 
-const x = [1, 2, 3, 4, 5].map((item) => item * 2);
+// const x = [1, 2, 3, 4, 5].map((item) => item * 2);
 
-console.log(x);
+// console.log(x);
 
-const titles = books.map((book) => book.title);
+// const titles = books.map((book) => book.title);
 
-console.log(titles);
+// console.log(titles);
 
-const essentialData = books.map((book) => ({
-  title: book.title,
-  author: book.author,
-  reviewsCount: getTotalReviewCount(book),
-}));
+// const essentialData = books.map((book) => ({
+//   title: book.title,
+//   author: book.author,
+//   reviewsCount: getTotalReviewCount(book),
+// }));
 
-console.log(essentialData);
+// console.log(essentialData);
 
-const longBooks = books.filter((book) => book.pages > 500);
-longBooks;
+// const longBooks = books.filter((book) => book.pages > 500);
+// longBooks;
 
-const longBooksWithAdaptation = books
-  .filter((book) => book.pages > 500)
-  .filter((book) => book.hasMovieAdaptation);
-longBooksWithAdaptation;
+// const longBooksWithAdaptation = books
+//   .filter((book) => book.pages > 500)
+//   .filter((book) => book.hasMovieAdaptation);
+// longBooksWithAdaptation;
 
-const longBooksWithAdaptationE = books.filter(
-  (book) => book.pages > 500 && book.hasMovieAdaptation
-);
-longBooksWithAdaptationE;
+// const longBooksWithAdaptationE = books.filter(
+//   (book) => book.pages > 500 && book.hasMovieAdaptation
+// );
+// longBooksWithAdaptationE;
 
-const adventureBooks = books
-  .filter((book) => book.genres.includes("adventure"))
-  .map((book) => book.title);
-adventureBooks;
+// const adventureBooks = books
+//   .filter((book) => book.genres.includes("adventure"))
+//   .map((book) => book.title);
+// adventureBooks;
 
-const pagesAllBooks = books.reduce((sum, book) => sum + book.pages, 0);
-pagesAllBooks;
+// const pagesAllBooks = books.reduce((sum, book) => sum + book.pages, 0);
+// pagesAllBooks;
 
-const arrayA = [3, 7, 1, 9, 6];
-const arrayASorted = arrayA.sort((a, b) => a - b);
-arrayASorted;
-arrayA;
+// const arrayA = [3, 7, 1, 9, 6];
+// const arrayASorted = arrayA.sort((a, b) => a - b);
+// arrayASorted;
+// arrayA;
 
-// Como este método altera o array inicial é usado esta técnica abaixo
-const arrayB = [3, 7, 1, 9, 6];
-const arrayBSorted = arrayB.slice().sort((a, b) => a - b);
-arrayBSorted;
-arrayB;
+// // Como este método altera o array inicial é usado esta técnica abaixo
+// const arrayB = [3, 7, 1, 9, 6];
+// const arrayBSorted = arrayB.slice().sort((a, b) => a - b);
+// arrayBSorted;
+// arrayB;
 
-const sortedByPages = books.slice().sort((a, b) => a.pages - b.pages);
-sortedByPages;
+// const sortedByPages = books.slice().sort((a, b) => a.pages - b.pages);
+// sortedByPages;
 
-const newBook = {
-  id: 6,
-  title: "Harry Potter and the Chamber of Secrets",
-  author: "J. K. Rowling",
-};
+// const newBook = {
+//   id: 6,
+//   title: "Harry Potter and the Chamber of Secrets",
+//   author: "J. K. Rowling",
+// };
 
-// 1) Add book object to array
-const booksAfterAdd = [...books, newBook];
-booksAfterAdd;
+// // 1) Add book object to array
+// const booksAfterAdd = [...books, newBook];
+// booksAfterAdd;
 
-// 2) Delete book object from array
-const booksAfterDelete = booksAfterAdd.filter((book) => book.id !== 3);
-booksAfterDelete;
+// // 2) Delete book object from array
+// const booksAfterDelete = booksAfterAdd.filter((book) => book.id !== 3);
+// booksAfterDelete;
 
-// 3) Update book object in the array
-const booksAfterUpdate = booksAfterDelete.map((book) =>
-  book.id === 1 ? { ...book, pages: 1210 } : book
-);
-booksAfterUpdate;
+// // 3) Update book object in the array
+// const booksAfterUpdate = booksAfterDelete.map((book) =>
+//   book.id === 1 ? { ...book, pages: 1210 } : book
+// );
+// booksAfterUpdate;
+
+fetch("https://jsonplaceholder.typicode.com/todos")
+  .then((res) => res.json())
+  .then((data) => console.log(data));
+
+console.log("jonas");

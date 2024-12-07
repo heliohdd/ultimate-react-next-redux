@@ -323,7 +323,7 @@ body {
   left: 0.6rem;
   height: 3.2rem;
   aspect-ratio: 1;
-  border-radius: 50%;
+  border-radius: 25%;
   border: none;
   /* background-color: var(--color-text); */
   background-color: #fff;

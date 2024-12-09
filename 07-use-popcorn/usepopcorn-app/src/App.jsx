@@ -13,12 +13,11 @@ export default function App() {
 
   const { movies, isLoading, error } = useMovies(query);
 
-  // # testar depois de custom hook
-  // const [watched, setWatched] = useState(function () {
-  //   const storedValue = localStorage.getItem("watched");
-  //   return JSON.parse(storedValue);
-  // });
-  const [watched, setWatched] = useState([]);
+  const [watched, setWatched] = useState(function () {
+    // # Used localStorage to retrieve data about the watched movies tha are persisted in the browser functionality
+    const storedValue = localStorage.getItem("watched");
+    return JSON.parse(storedValue);
+  });
 
   function handleSelectMovie(id) {
     setSelectedId((selectedId) => (id === selectedId ? null : id));
@@ -30,14 +29,19 @@ export default function App() {
 
   function handleAddWatched(movie) {
     setWatched((watched) => [...watched, movie]);
-
-    // # Conferir depois de criar custom hook
-    // localStorage.setItem("watched", JSON.stringfy([...watched, movie]));
   }
 
   function handleDeleteWatched(id) {
     setWatched((watched) => watched.filter((movie) => movie.imdbID !== id));
   }
+
+  useEffect(
+    function () {
+      // # 1st Option, confer 2nd option with useEffect above
+      localStorage.setItem("watched", JSON.stringify(watched));
+    },
+    [watched]
+  );
 
   return (
     <>

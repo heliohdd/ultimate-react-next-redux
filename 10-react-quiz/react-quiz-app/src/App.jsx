@@ -2,6 +2,9 @@ import { useEffect, useReducer } from "react";
 
 import Header from "./Header";
 import Mainx from "./Mainx";
+import Loader from "./Loader";
+import Error from "./Error";
+import StartScreen from "./StartScreen";
 
 const initialState = {
   questions: [],
@@ -16,13 +19,21 @@ function reducer(state, action) {
       return { ...state, questions: action.payload, status: "ready" };
     case "dataFailed":
       return { ...state, status: "error" };
+    case "dataLoading":
+      return { ...state, status: "loading" };
+    case "dataActive":
+      return { ...state, status: "active" };
+    case "finished":
+      return { ...state, status: "finished" };
     default:
       throw new Error("Action unknown");
   }
 }
 
 export default function App() {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [{ questions, status }, dispatch] = useReducer(reducer, initialState);
+
+  const numQuestions = questions.length;
 
   useEffect(function () {
     fetch("http://localhost:8000/questions")
@@ -36,8 +47,9 @@ export default function App() {
       <Header />
 
       <Mainx className="main">
-        <p>1/15</p>
-        <p>Question?</p>
+        {status === "loading" && <Loader />}
+        {status === "error" && <Error />}
+        {status === "ready" && <StartScreen numQuestions={numQuestions} />}
       </Mainx>
     </div>
   );

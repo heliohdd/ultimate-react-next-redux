@@ -30,7 +30,10 @@ function reducer(state, action) {
     case "dataLoading":
       return { ...state, status: "loading" };
     case "start":
-      return { ...state, status: "active" };
+      return {
+        ...state,
+        status: "active",
+      };
     case "newAnswer": {
       const question = state.questions.at(state.index);
       return {
@@ -51,6 +54,8 @@ function reducer(state, action) {
         highscore:
           state.points > state.highscore ? state.points : state.highscore,
       };
+    case "restart":
+      return { ...initialState, questions: state.questions, status: "ready" };
 
     default:
       throw new Error("Action unknown");
@@ -111,6 +116,7 @@ export default function App() {
             points={points}
             maxPossiblePoints={maxPossiblePoints}
             highscore={highscore}
+            dispatch={dispatch}
           />
         )}
       </Mainx>
